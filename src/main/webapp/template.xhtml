@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Classe descritiva genérica</title >
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </h:head >
+
+    <h:body >
+        <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"/>  
+
+        <p:dialog modal="true" widgetVar="statusDialog" header="Carregando"   
+                  draggable="false" closable="false">  
+            <p:graphicImage value="/conteudo/imagem/ajaxloadingbar.gif" />  
+        </p:dialog>  
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100">
+                Cabeçalho
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100">
+                Rodapé
+            </p:layoutUnit>
+ 
+            <p:layoutUnit position="west" size="175" header="Menu" collapsible="true">
+                <h:form>
+                    <p:menubar>
+                         <p:submenu label="Cadastros" >
+                            <p:menuitem value="Marca" url="/classedescritiva/index.jsf?tipo=Marca" />
+                            <p:menuitem value="Cor" url="/classedescritiva/index.jsf?tipo=Cor" />
+                            <p:menuitem value="Opcional" url="/classedescritiva/index.jsf?tipo=Opcional" />
+                            <p:menuitem value="Combustivel" url="/classedescritiva/index.jsf?tipo=Combustivel" />
+                        </p:submenu>  
+                    </p:menubar> 
+                 </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                  <ui:insert name="container">Conteudo</ui:insert>
+            </p:layoutUnit>
+
+        </p:layout>
+
+
+
+
+    </h:body>
+</html>

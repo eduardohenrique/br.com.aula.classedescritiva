@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:form id="formCadastro">
+        <p:panel header="#{classeDescritivaController.classeDescritiva.tipo}" id="painelCadastro">
+            <p:growl />
+            <h:inputHidden value="#{classeDescritivaController.classeDescritiva.tipo}"/>
+            <h:inputHidden value="#{classeDescritivaController.classeDescritiva.id}"/>
+           
+            <h:panelGrid columns="2">
+
+                <h:outputLabel value="Descrição:*"/>
+                <p:inputText value="#{classeDescritivaController.classeDescritiva.descricao}"/>
+
+            </h:panelGrid>
+
+            <p:commandButton
+                value="Salvar"
+                icon="ui-icon-disk" 
+                actionListener="#{classeDescritivaController.salvar()}" 
+                update="painelCadastro,:formTabela:tabela" />
+
+            <p:commandButton
+                value="Novo"
+                icon="ui-icon-plus" 
+                process="@this"
+                actionListener="#{classeDescritivaController.novo()}"
+                update="painelCadastro" />
+        </p:panel>
+    </h:form>
+    
+</ui:fragment>
+

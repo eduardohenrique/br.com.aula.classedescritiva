@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:form id="formTabela"> 
+
+        <p:contextMenu for="tabela">   
+            <p:menuitem value="Excluir" icon="ui-icon-close" 
+                        actionListener="#{classeDescritivaController.excluir()}" 
+                        update="painelMarca" />
+            
+             <p:menuitem value="Editar" icon="ui-icon-pencil"
+                        actionListener="#{classeDescritivaController.editar()}" 
+                        update=":formCadastro:painelCadastro" /> 
+        </p:contextMenu>  
+
+        <p:panel header="#{classeDescritivaController.classeDescritiva.tipo} cadastradas" id="painelMarca">
+            <p:growl />
+            <p:dataTable value="#{classeDescritivaController.todos()}"
+                         var="c"
+                         id="tabela"
+                         paginator="true"
+                         rows="10"
+                         emptyMessage="Nenhuma #{classeDescritivaController.classeDescritiva.tipo} encontrada"
+                         rowKey="#{c.id}"  
+                         selection="#{classeDescritivaController.classeDescritivaSelecionada}" selectionMode="single">
+
+                <p:column headerText="Código" style="width: 10%">#{c.id}</p:column>
+
+                <p:column headerText="Descrição" style="width: 90%">
+                    #{c.descricao}
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+
+</ui:fragment>
